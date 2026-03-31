@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Share+Tech+Mono&family=Exo+2:wght@300;400;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  body {
+    background-color: #02040a;
+    color: #c8d8e8;
+    font-family: 'Exo 2', sans-serif;
+    overflow-x: hidden;
+  }
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #02040a; }
+  ::-webkit-scrollbar-thumb { background: #1a3a6e; border-radius: 2px; }
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.7) sepia(1) hue-rotate(180deg); cursor: pointer;
+  }
+}
+
+.starfield {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(1px 1px at 5% 12%,  rgba(200,220,255,0.8) 0%, transparent 100%),
+    radial-gradient(1px 1px at 15% 45%, rgba(200,220,255,0.5) 0%, transparent 100%),
+    radial-gradient(2px 2px at 23% 78%, rgba(180,200,255,0.7) 0%, transparent 100%),
+    radial-gradient(1px 1px at 31% 22%, rgba(220,220,255,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 42% 65%, rgba(200,230,255,0.4) 0%, transparent 100%),
+    radial-gradient(2px 2px at 55% 8%,  rgba(255,220,200,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 62% 88%, rgba(200,220,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 70% 33%, rgba(220,200,255,0.7) 0%, transparent 100%),
+    radial-gradient(2px 2px at 78% 56%, rgba(200,220,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 88% 20%, rgba(255,240,200,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 93% 72%, rgba(200,220,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 7%  90%, rgba(200,220,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 48% 40%, rgba(220,220,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 83% 95%, rgba(200,220,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 67% 15%, rgba(220,240,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 18% 60%, rgba(200,220,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 35% 50%, rgba(200,220,255,0.2) 0%, transparent 100%),
+    radial-gradient(1px 1px at 96% 40%, rgba(200,220,255,0.4) 0%, transparent 100%);
+}
+
+.nebula-bg {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 40% at 15% 25%, rgba(8,25,80,0.7) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 85% 65%, rgba(25,8,60,0.5) 0%, transparent 70%),
+    radial-gradient(ellipse 70% 30% at 50% 95%, rgba(5,18,50,0.5) 0%, transparent 70%);
+}
+
+.scanlines::after {
+  content: ''; position: fixed; inset: 0; z-index: 100; pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg, transparent, transparent 2px,
+    rgba(0,0,0,0.025) 2px, rgba(0,0,0,0.025) 4px
+  );
+}
+
+@layer utilities {
+  .font-mono-space { font-family: 'Share Tech Mono', monospace; }
+  .font-display-space { font-family: 'Orbitron', sans-serif; }
+
+  .text-space-gradient {
+    background: linear-gradient(135deg, #38b6ff 0%, #00ffe0 50%, #5e8cff 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+
+  .text-glow-blue { text-shadow: 0 0 20px rgba(56,182,255,0.6), 0 0 40px rgba(56,182,255,0.2); }
+
+  .space-card {
+    background: rgba(4,12,30,0.88);
+    border: 1px solid rgba(56,130,255,0.18);
+    backdrop-filter: blur(10px);
+    position: relative;
+  }
+
+  .glow-box {
+    box-shadow: 0 0 20px rgba(0,100,255,0.1), 0 0 60px rgba(0,50,150,0.07),
+      inset 0 1px 0 rgba(56,130,255,0.08);
+  }
+  .glow-box-hover:hover {
+    box-shadow: 0 0 30px rgba(0,150,255,0.18), 0 0 80px rgba(0,80,200,0.1),
+      inset 0 1px 0 rgba(56,182,255,0.12);
+    border-color: rgba(56,182,255,0.4) !important;
+  }
+
+  .sep-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(56,130,255,0.35), transparent);
+  }
+
+  .tag-badge {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.62rem;
+    letter-spacing: 0.1em; padding: 2px 8px;
+    border: 1px solid rgba(56,182,255,0.25); border-radius: 2px;
+    color: rgba(56,182,255,0.75); background: rgba(56,182,255,0.06);
+  }
+
+  .orbit-spin { animation: orbit 1.4s linear infinite; }
+  @keyframes orbit { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+  .glitch { position: relative; }
+  .glitch::before, .glitch::after {
+    content: attr(data-text); position: absolute; inset: 0; background: transparent;
+  }
+  .glitch::before {
+    color: #ff3c6e; clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%);
+    transform: translateX(-2px); animation: glitch1 5s infinite; opacity: 0;
+  }
+  .glitch::after {
+    color: #00ffe0; clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+    transform: translateX(2px); animation: glitch2 5s infinite; opacity: 0;
+  }
+  @keyframes glitch1 {
+    0%,88%,100% { opacity:0; transform:translateX(-2px); }
+    90%,92% { opacity:0.7; transform:translateX(-5px) skewX(-4deg); }
+  }
+  @keyframes glitch2 {
+    0%,88%,100% { opacity:0; transform:translateX(2px); }
+    89%,91% { opacity:0.7; transform:translateX(5px) skewX(3deg); }
+  }
+}
